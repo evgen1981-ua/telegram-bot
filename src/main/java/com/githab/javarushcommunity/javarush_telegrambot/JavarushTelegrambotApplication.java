@@ -21,7 +21,7 @@ public abstract class JavarushTelegrambotApplication {
 		}catch (TelegramApiRequestException e){
 
 		}
-		//SpringApplication.run(JavarushTelegrambotApplication.class, args);
+		SpringApplication.run(JavarushTelegrambotApplication.class, args);
 	}
 
 }

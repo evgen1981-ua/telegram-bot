@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.githab.javarushcommunity</groupId>
 	<artifactId>javarush-telegrambot</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.2.0-SNAPSHOT</version>
 	<name>Javarush-Telegrambot</name>
 	<description>Telegram bot for Javarush from community to community</description>
 	<url/>
@@ -55,6 +55,19 @@
 
 	<build>
 		<plugins>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>3.0.0-M5</version>
+					<dependencies>
+						<dependency>
+							<groupId>org.junit.jupiter</groupId>
+							<artifactId>junit-jupiter-engine</artifactId>
+							<version>5.5.2</version>
+						</dependency>
+					</dependencies>
+				</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
