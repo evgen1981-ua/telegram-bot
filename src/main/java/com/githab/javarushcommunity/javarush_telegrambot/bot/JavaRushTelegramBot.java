@@ -19,6 +19,8 @@ import static com.githab.javarushcommunity.javarush_telegrambot.command.CommandN
 @Component
 
 public class JavaRushTelegramBot extends TelegramLongPollingBot {
+String username="@test_javarush1_community_bot";
+String token="7168425753:AAEluuiQNbM_UAqhvItXQdIB68rN2QlaO9U";
 
     private final CommandContainer commandContainer;
 public final String COMMAND_PREFIX="/";
@@ -41,10 +43,10 @@ if(update.hasMessage() && update.getMessage().hasText()){
     }
 
     public String getBotUsername(){
-        return "@test_javarush1_community_bot";
+        return username;
     }
 @Override
     public String getBotToken(){
-        return "7168425753:AAEluuiQNbM_UAqhvItXQdIB68rN2QlaO9U";
+        return token;
     }
 }
