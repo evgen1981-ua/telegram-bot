@@ -28,7 +28,7 @@
 	</parent>
 	<groupId>com.githab.javarushcommunity</groupId>
 	<artifactId>javarush-telegrambot</artifactId>
-	<version>0.2.0-SNAPSHOT</version>
+	<version>0.4.0-SNAPSHOT</version>
 	<name>Javarush-Telegrambot</name>
 	<description>Telegram bot for Javarush from community to community</description>
 	<url/>
@@ -49,6 +49,33 @@
 		<telegrambot.starter.version>6.3.0</telegrambot.starter.version>
 	</properties>
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.flywaydb/flyway-mysql -->
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-mysql</artifactId>
+			<version>8.5.13</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
+		<dependency>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
+			<version>8.3.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
 		<dependency>
 			<groupId>org.telegram</groupId>
 			<artifactId>telegrambots-spring-boot-starter</artifactId>
@@ -57,19 +84,25 @@
 		<dependency>
 			<groupId>org.telegram</groupId>
 			<artifactId>telegrambots</artifactId>
-			<version>6.0.1</version>
+			<version>6.3.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>17.0.0</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
 	<build>
 		<plugins>
