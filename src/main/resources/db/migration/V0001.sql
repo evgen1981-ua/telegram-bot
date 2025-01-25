@@ -1,0 +1,1 @@
+create TABLE tg_user(chat_id varchar(100),active boolean);
