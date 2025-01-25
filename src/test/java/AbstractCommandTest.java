@@ -2,7 +2,7 @@ import com.githab.javarushcommunity.javarush_telegrambot.bot.JavaRushTelegramBot
 import com.githab.javarushcommunity.javarush_telegrambot.command.Command;
 import com.githab.javarushcommunity.javarush_telegrambot.service.SendBotMessageImpl;
 import com.githab.javarushcommunity.javarush_telegrambot.service.SendBotMessageService;
-import org.apache.http.conn.MultihomePlainSocketFactory;
+import com.githab.javarushcommunity.javarush_telegrambot.service.TelegramUserService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -11,6 +11,7 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 public abstract class AbstractCommandTest {
+    protected TelegramUserService telegramUserService=Mockito.mock(TelegramUserService.class);
     protected JavaRushTelegramBot javaRushBot= Mockito.mock(JavaRushTelegramBot.class);
     protected SendBotMessageService sendBotMessageService=new SendBotMessageImpl(javaRushBot);
 

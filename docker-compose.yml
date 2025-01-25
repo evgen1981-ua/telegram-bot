@@ -1,9 +1,25 @@
 version: '3.1'
 services:
-  jrtb:
+  jrtb-bot:
+    depends_on:
+      - jrtb-db
     build:
       context: .
     environment:
       - BOT_NAME=${BOT_NAME}
       - BOT_TOKEN=${BOT_TOKEN}
+      - BOT_DB_USERNAME=${BOT_DB_USERNAME}
+      - BOT_DB_PASSWORD=${BOT_DB_PASSWORD}
     restart: always
+  jrtb_db:
+    image: mysql:8.0-bookworm
+    restart: always
+    environment:
+      MYSQL_USER: ${BOT_DB_USERNAME}
+      MYSQL_PASSWORD: ${BOT_DB_PASSWORD}
+      MYSQL_DATABASE: 'jrtb-db'
+      MYSQL_ROOT_PASSWORD: "1234"
+    ports:
+      - '8090:3306'
+    expose:
+      - '8090'

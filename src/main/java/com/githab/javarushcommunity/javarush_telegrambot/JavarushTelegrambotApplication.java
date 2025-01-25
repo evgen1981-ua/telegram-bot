@@ -2,26 +2,39 @@ package com.githab.javarushcommunity.javarush_telegrambot;
 
 import com.githab.javarushcommunity.javarush_telegrambot.bot.JavaRushTelegramBot;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.AutoConfigurationPackage;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
-import org.telegram.telegrambots.meta.ApiConstants;
+
+
 import org.telegram.telegrambots.meta.TelegramBotsApi;
-import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
 @SpringBootApplication
-public abstract class JavarushTelegrambotApplication {
+@AutoConfigurationPackage
 
-	public static void main(String[] args) throws TelegramApiException {
-		TelegramBotsApi telegramBotsApi=new TelegramBotsApi(DefaultBotSession.class);
-		try{
-			telegramBotsApi.registerBot(new JavaRushTelegramBot());
-		}catch (TelegramApiRequestException e){
+public abstract class JavarushTelegrambotApplication{
 
-		}
+	public JavarushTelegrambotApplication(JavaRushTelegramBot bot) throws TelegramApiException {
+	TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
+	telegramBotsApi.registerBot(bot);
+}
+
+
+
+    public static void main(String[] args)  {
+
+
 		SpringApplication.run(JavarushTelegrambotApplication.class, args);
+
+		//new SpringApplicationBuilder(JavarushTelegrambotApplication.class).run(args);
+
+
+
+
+
+
+
 	}
 
 }
