@@ -21,10 +21,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Set up JDK 21
-      uses: actions/setup-java@v4
+    - name: Set up MySql
+      uses: mirromutth/mysql-action@v1.1
       with:
-        java-version: '21'
+        mysql version: '8.0'
+        mysql database: 'dev_jrtb_db'
+        mysql root password: 'root'
+        mysql user: 'dev_jrtb_db_user'
+        mysql password: 'dev_jrtb_db_password'
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
