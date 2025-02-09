@@ -10,8 +10,12 @@ private final SendBotMessageService sendBotMessageService;
 public static final String HELP_MESSAGE=String.format("Доступні команди\n"
         +"%s - почати роботу\n"
         +"%s - приостановити роботу\n"
+        +" Paбота с подписками на группы:\n"
+        +"%s - подписаться на группу статей\n"
+        +"%s - получить список групп, на которые подписан\n\n"
         +"%s - отримати допомогу\n"
-        +"%s - отримати статистику",START.getCommandName(),STOP.getCommandName(),HELP.getCommandName(),STAT.getCommandName());
+        +"%s - отримати статистику",START.getCommandName(),STOP.getCommandName(),ADD_GROUP_SUB.getCommandName()
+        ,LIST_GROUP_SUB.getCommandName(),HELP.getCommandName(),STAT.getCommandName());
 
     public HelpCommand(SendBotMessageService sendBotMessageService) {
         this.sendBotMessageService = sendBotMessageService;

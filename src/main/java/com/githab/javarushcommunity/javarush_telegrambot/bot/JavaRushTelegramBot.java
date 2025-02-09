@@ -2,6 +2,10 @@ package com.githab.javarushcommunity.javarush_telegrambot.bot;
 
 
 import com.githab.javarushcommunity.javarush_telegrambot.command.CommandContainer;
+import com.githab.javarushcommunity.javarush_telegrambot.javarushclient.JavaRushGroupClient;
+import com.githab.javarushcommunity.javarush_telegrambot.javarushclient.JavaRushGroupClientIml;
+import com.githab.javarushcommunity.javarush_telegrambot.service.GroupSubService;
+import com.githab.javarushcommunity.javarush_telegrambot.service.GroupSubServiceIml;
 import com.githab.javarushcommunity.javarush_telegrambot.service.SendBotMessageImpl;
 import com.githab.javarushcommunity.javarush_telegrambot.service.TelegramUserServiceIml;
 import org.springframework.stereotype.Component;
@@ -22,8 +26,8 @@ String token="7168425753:AAHE7zJIGFlbwoHUHXUOs7AFqEwYwGTJfzU";
 
 public final String COMMAND_PREFIX="/";
 
-    public JavaRushTelegramBot(TelegramUserServiceIml telegramUserServiceIml){
-        this.commandContainer=new CommandContainer(new SendBotMessageImpl(this),telegramUserServiceIml);
+    public JavaRushTelegramBot(TelegramUserServiceIml telegramUserServiceIml, GroupSubService groupSubServiceIml, JavaRushGroupClientIml javaRushGroupClient){
+        this.commandContainer=new CommandContainer(new SendBotMessageImpl(this),telegramUserServiceIml,javaRushGroupClient,groupSubServiceIml);
 
     }
 
