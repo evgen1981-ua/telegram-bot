@@ -1,5 +1,3 @@
-package com.githab.javarushcommunity.javarush_telegrambot;
-
 import com.githab.javarushcommunity.javarush_telegrambot.command.ListGroupSubCommand;
 import com.githab.javarushcommunity.javarush_telegrambot.repository.entity.GroupSub;
 import com.githab.javarushcommunity.javarush_telegrambot.repository.entity.TelegramUser;
