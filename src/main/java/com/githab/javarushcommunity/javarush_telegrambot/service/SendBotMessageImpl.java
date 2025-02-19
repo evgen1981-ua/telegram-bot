@@ -6,6 +6,12 @@ import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+
+import java.util.List;
+
+import static org.springframework.util.CollectionUtils.isEmpty;
+
+
 @Service
 public class SendBotMessageImpl implements SendBotMessageService{
 private final JavaRushTelegramBot javaRushBot;
@@ -27,5 +33,12 @@ private final JavaRushTelegramBot javaRushBot;
         }catch (TelegramApiException e){
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void sendMessage(String chaId, List<String> messages) {
+        if(isEmpty(messages))
+            return;
+        messages.forEach(m->sendMessage(String.valueOf(chaId),m));
     }
 }

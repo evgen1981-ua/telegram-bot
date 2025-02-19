@@ -1,5 +1,8 @@
 package com.githab.javarushcommunity.javarush_telegrambot.service;
 
+import com.githab.javarushcommunity.javarush_telegrambot.javarushclient.JavaRushGroupClient;
+import com.githab.javarushcommunity.javarush_telegrambot.javarushclient.JavaRushPostClient;
+import com.githab.javarushcommunity.javarush_telegrambot.javarushclient.JavaRushPostClientIml;
 import com.githab.javarushcommunity.javarush_telegrambot.javarushclient.dto.GroupDiscussionInfo;
 import com.githab.javarushcommunity.javarush_telegrambot.repository.GroupSubRepository;
 import com.githab.javarushcommunity.javarush_telegrambot.repository.entity.GroupSub;
@@ -8,17 +11,21 @@ import jakarta.ws.rs.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class GroupSubServiceIml implements GroupSubService{
     private final GroupSubRepository groupSubRepository;
     private final TelegramUserService telegramUserService;
+    private final JavaRushGroupClient javaRushGroupClient;
 
     @Autowired
-    public GroupSubServiceIml(GroupSubRepository groupSubRepository,TelegramUserService telegramUserService) {
+    public GroupSubServiceIml(GroupSubRepository groupSubRepository, TelegramUserService telegramUserService,
+                              JavaRushGroupClient javaRushGroupClient) {
         this.groupSubRepository=groupSubRepository;
         this.telegramUserService=telegramUserService;
+        this.javaRushGroupClient=javaRushGroupClient;
     }
 
 
@@ -38,6 +45,7 @@ public class GroupSubServiceIml implements GroupSubService{
             }else {
                 groupSub=new GroupSub();
                 groupSub.addUser(telegramUser);
+                groupSub.setLastArticleId(javaRushGroupClient.findLastArticle(groupDiscussionInfo.getId()));
                 groupSub.setId(groupDiscussionInfo.getId());
                 groupSub.setTitle(groupDiscussionInfo.getTitle());
             }
@@ -47,6 +55,11 @@ public class GroupSubServiceIml implements GroupSubService{
     @Override
     public GroupSub save(GroupSub groupSub) {
         return groupSubRepository.save(groupSub);
+    }
+
+    @Override
+    public List<GroupSub> findAll() {
+        return groupSubRepository.findAll();
     }
 
     @Override
