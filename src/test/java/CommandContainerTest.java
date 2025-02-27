@@ -13,6 +13,9 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.util.Arrays;
+import java.util.Collections;
+
+import static java.util.Collections.singletonList;
 
 @DisplayName("Unit-level testing for CommandContainer")
 public class CommandContainerTest {
@@ -24,19 +27,19 @@ public class CommandContainerTest {
         TelegramUserService telegramUserService=Mockito.mock(TelegramUserService.class);
         JavaRushGroupClient javaRushGroupClient=Mockito.mock(JavaRushGroupClient.class);
         GroupSubService groupSubService=Mockito.mock(GroupSubService.class);
-        commandContainer=new CommandContainer(sendBotMessageService,telegramUserService,javaRushGroupClient,groupSubService);
+        commandContainer=new CommandContainer(sendBotMessageService,telegramUserService,javaRushGroupClient,groupSubService, singletonList("username"));
     }
     @Test
     public void shouldGetAllTheExistingCommands(){
         Arrays.stream(CommandName.values()).forEach(commandName -> {
-            Command command=commandContainer.retrieveCommand(commandName.getCommandName());
+            Command command=commandContainer.retrieveCommand(commandName.getCommandName(),"username");
             Assertions.assertNotEquals(UnknownCommand.class,command.getClass());
         });
     }
     @Test
     public void shouldReturnUnknownCommand(){
         String unknownCommand="/wggbvsr";
-        Command command=commandContainer.retrieveCommand(unknownCommand);
+        Command command=commandContainer.retrieveCommand(unknownCommand,"username");
         Assertions.assertEquals(UnknownCommand.class,command.getClass());
     }
 }

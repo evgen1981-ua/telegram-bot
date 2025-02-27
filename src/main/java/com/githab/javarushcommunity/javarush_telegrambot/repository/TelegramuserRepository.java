@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface TelegramuserRepository extends CrudRepository<TelegramUser,String> {
 List<TelegramUser> findAllByActiveTrue();
+List<TelegramUser> findAllByActiveFalse();
 }

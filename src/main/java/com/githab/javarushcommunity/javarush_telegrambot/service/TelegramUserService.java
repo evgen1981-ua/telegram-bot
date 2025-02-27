@@ -7,8 +7,9 @@ import java.util.Optional;
 
 public interface TelegramUserService {
     void save(TelegramUser telegramUser);
-    List<TelegramUser> retrieveAllActiveUser();
+    List<TelegramUser> findAllActiveUser();
     Optional<TelegramUser> findByChatId(String chatId);
+    List<TelegramUser> findAllInActiveUsers();
 
 
 }
