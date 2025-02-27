@@ -16,6 +16,6 @@ public class StatCommandTest extends AbstractCommandTest{
 
     @Override
     Command getCommand() {
-        return new StatCommand(sendBotMessageService,telegramUserService);
+        return new StatCommand(sendBotMessageService,statisticsService);
     }
 }

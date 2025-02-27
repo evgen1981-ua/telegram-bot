@@ -4,6 +4,7 @@ import com.githab.javarushcommunity.javarush_telegrambot.command.annotation.Admi
 import com.githab.javarushcommunity.javarush_telegrambot.javarushclient.JavaRushGroupClient;
 import com.githab.javarushcommunity.javarush_telegrambot.service.GroupSubService;
 import com.githab.javarushcommunity.javarush_telegrambot.service.SendBotMessageService;
+import com.githab.javarushcommunity.javarush_telegrambot.service.StatisticsService;
 import com.githab.javarushcommunity.javarush_telegrambot.service.TelegramUserService;
 import com.google.common.collect.ImmutableMap;
 import org.apache.http.conn.params.ConnConnectionParamBean;
@@ -20,12 +21,12 @@ public class CommandContainer {
     public final Command unknownCommand;
     private final List<String> admins;
     public CommandContainer(SendBotMessageService sendBotMessageService, TelegramUserService telegramUserService,
-                            JavaRushGroupClient javaRushGroupClient, GroupSubService groupSubService,List<String> admins) {
+                            JavaRushGroupClient javaRushGroupClient, GroupSubService groupSubService, List<String> admins, StatisticsService statisticsService) {
         commandMap= ImmutableMap.<String, Command>builder().put(START.getCommandName(),new StartCommand(sendBotMessageService,telegramUserService))
                 .put(HELP.getCommandName(),new HelpCommand(sendBotMessageService))
                 .put(NO.getCommandName(),new NoCommand(sendBotMessageService))
                 .put(STOP.getCommandName(),new StopCommand(sendBotMessageService,telegramUserService))
-                .put(STAT.getCommandName(),new StatCommand(sendBotMessageService,telegramUserService))
+                .put(STAT.getCommandName(),new StatCommand(sendBotMessageService,statisticsService))
                 .put(ADD_GROUP_SUB.getCommandName(), new AddGroupSubCommand(sendBotMessageService,javaRushGroupClient,groupSubService))
                 .put(LIST_GROUP_SUB.getCommandName(),new ListGroupSubCommand(sendBotMessageService,telegramUserService))
                 .put(DELETE_GROUP_SUB.getCommandName(),new DeleteGroupSubCommand(sendBotMessageService,telegramUserService,groupSubService))
